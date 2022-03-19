@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Peliculas">
+        <s:complexType />
+      </s:element>
+      <s:element name="PeliculasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PeliculasResult" type="tns:ArrayOfCaso3" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCaso3">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Caso3" nillable="true" type="tns:Caso3" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Caso3">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha_emision" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="comentario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertarPelicula">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha_emision" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comentario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarPeliculaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertarPeliculaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarPelicula">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha_emision" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comentario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarPeliculaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ModificarPeliculaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarPelicula">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarPeliculaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarPeliculaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PeliculasSoapIn">
+    <wsdl:part name="parameters" element="tns:Peliculas" />
+  </wsdl:message>
+  <wsdl:message name="PeliculasSoapOut">
+    <wsdl:part name="parameters" element="tns:PeliculasResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarPeliculaSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarPelicula" />
+  </wsdl:message>
+  <wsdl:message name="InsertarPeliculaSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarPeliculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarPeliculaSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarPelicula" />
+  </wsdl:message>
+  <wsdl:message name="ModificarPeliculaSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarPeliculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarPeliculaSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarPelicula" />
+  </wsdl:message>
+  <wsdl:message name="EliminarPeliculaSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarPeliculaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="webservSoap">
+    <wsdl:operation name="Peliculas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lista de películas</wsdl:documentation>
+      <wsdl:input message="tns:PeliculasSoapIn" />
+      <wsdl:output message="tns:PeliculasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarPelicula">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Insertar registro de películas</wsdl:documentation>
+      <wsdl:input message="tns:InsertarPeliculaSoapIn" />
+      <wsdl:output message="tns:InsertarPeliculaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPelicula">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Modificar registro de película</wsdl:documentation>
+      <wsdl:input message="tns:ModificarPeliculaSoapIn" />
+      <wsdl:output message="tns:ModificarPeliculaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPelicula">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elminar registro</wsdl:documentation>
+      <wsdl:input message="tns:EliminarPeliculaSoapIn" />
+      <wsdl:output message="tns:EliminarPeliculaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="webservSoap" type="tns:webservSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Peliculas">
+      <soap:operation soapAction="http://tempuri.org/Peliculas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarPelicula">
+      <soap:operation soapAction="http://tempuri.org/InsertarPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPelicula">
+      <soap:operation soapAction="http://tempuri.org/ModificarPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPelicula">
+      <soap:operation soapAction="http://tempuri.org/EliminarPelicula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="webservSoap12" type="tns:webservSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Peliculas">
+      <soap12:operation soapAction="http://tempuri.org/Peliculas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarPelicula">
+      <soap12:operation soapAction="http://tempuri.org/InsertarPelicula" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPelicula">
+      <soap12:operation soapAction="http://tempuri.org/ModificarPelicula" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPelicula">
+      <soap12:operation soapAction="http://tempuri.org/EliminarPelicula" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="webserv">
+    <wsdl:port name="webservSoap" binding="tns:webservSoap">
+      <soap:address location="https://localhost:44331/webserv.asmx" />
+    </wsdl:port>
+    <wsdl:port name="webservSoap12" binding="tns:webservSoap12">
+      <soap12:address location="https://localhost:44331/webserv.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
